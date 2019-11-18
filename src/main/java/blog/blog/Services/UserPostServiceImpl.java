@@ -1,19 +1,15 @@
 package blog.blog.Services;
 
 import blog.blog.Models.Post;
-import blog.blog.Models.User;
 import blog.blog.Models.UserPost;
 import blog.blog.Repositories.ProjectVariable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserPostServiceImpl implements UserPostService {
-
 
     /**
      * Getting a combined list of users and posts, found by a lET JOIN in the database

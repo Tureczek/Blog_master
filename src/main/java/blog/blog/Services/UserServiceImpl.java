@@ -5,7 +5,6 @@ import blog.blog.Repositories.ProjectVariable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-
-
-    //Fetching all users from blog database in MySQL
 
     /**
      *  Getting all users in database

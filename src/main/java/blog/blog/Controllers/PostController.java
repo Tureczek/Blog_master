@@ -1,7 +1,6 @@
 package blog.blog.Controllers;
 
 import blog.blog.Models.Post;
-import blog.blog.Models.User;
 import blog.blog.Models.UserPost;
 import blog.blog.Services.UserPostService;
 import org.slf4j.Logger;
