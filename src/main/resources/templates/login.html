@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{Styles.css}"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<h1>Login</h1>
+<form method="post" th:action="@{/login}">
+
+    <div><label for="username">Username:</label></div>
+    <input type="text" th:field="${user.username}" id="username" th:value="*{username}" placeholder="username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
+
+    <div><label for="password">Password:</label></div>
+    <input type="password" th:field="${user.password}" id="password" th:value="*{password}" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'">
+
+    <input type="submit" class="btn btn-success" value="Login">
+</form>
+
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>
