@@ -14,6 +14,11 @@ import java.util.List;
 @Service
 public class UserPostServiceImpl implements UserPostService {
 
+
+    /**
+     * Getting a combined list of users and posts, found by a lET JOIN in the database
+     * @return All posts and users.
+     */
     @Override
     public List<UserPost> fetchAll() {
         List<UserPost> userPost = new ArrayList<>();
@@ -26,9 +31,6 @@ public class UserPostServiceImpl implements UserPostService {
         while (rs.next()) {
             UserPost up = new UserPost();
 
-
-
-
             up.setUserId(rs.getInt(1));
             up.setUsername(rs.getString(2));
             up.setPassword(rs.getString(3));
@@ -40,20 +42,19 @@ public class UserPostServiceImpl implements UserPostService {
             up.setUserFkId(rs.getInt(9));
             userPost.add(up);
 
-
         }
         con.close();
 
-
         } catch (SQLException e){
 
-        }
-
-
-
-        return userPost;
+        } return userPost;
     }
 
+    /**
+     *
+     * @param post the post found by id in findById method
+     * @return return the post, and making it possible to edit it
+     */
     @Override
     public int update(Post post) {
         try {
@@ -67,7 +68,6 @@ public class UserPostServiceImpl implements UserPostService {
             pstmt.setInt(3, post.getPostId());
             return pstmt.executeUpdate();
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,6 +76,11 @@ public class UserPostServiceImpl implements UserPostService {
 
     }
 
+    /**
+     * Finding posts by Id
+     * @param id returning id on given post
+     * @return  id is used to edit a post in program
+     */
     @Override
     public UserPost findById(int id) {
 
@@ -110,6 +115,10 @@ public class UserPostServiceImpl implements UserPostService {
         return userPost;
     }
 
+    /**
+     *
+     * @param post Creating a new post
+     */
     @Override
     public int create(Post post) {
 
@@ -129,6 +138,11 @@ public class UserPostServiceImpl implements UserPostService {
         return 0;
     }
 
+    /**
+     *
+     * @param id Finding post by id
+     * @return Deleting the post found by id
+     */
     @Override
     public int delete(int id) {
 

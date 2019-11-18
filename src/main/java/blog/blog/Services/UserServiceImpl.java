@@ -15,7 +15,14 @@ public class UserServiceImpl implements UserService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+
     //Fetching all users from blog database in MySQL
+
+    /**
+     *  Getting all users in database
+     * @return returning all users in the database
+     */
+
     @Override
     public List<User> fetchAllUsers() {
 
@@ -45,10 +52,14 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    /**
+     *
+     * @param username Getting username from database
+     * @param password getting password from database
+     * @return Returning the given user to work with in the program.
+     */
     public User authenticateUser(String username, String password){
 
-        boolean access = false;
 
         try {
             Connection con = DriverManager.getConnection(ProjectVariable.getUrl(), ProjectVariable.getUsername(), ProjectVariable.getPassword());
@@ -72,12 +83,11 @@ public class UserServiceImpl implements UserService {
 
                 log.info("Login succeeded in: " + this.getClass());
 
-                access = true;
 
                 return user;
 
             }else{
-                access = false;
+
                 log.info("Login failed in: " + this.getClass());
             }
             con.close();
@@ -88,13 +98,5 @@ public class UserServiceImpl implements UserService {
 
         return null;
     }
-
-
-  /*  public User authenticate(String Username, String password){
-        fetchAllUsers();
-
-    }
-*/
-
 
 }
