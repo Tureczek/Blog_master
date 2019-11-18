@@ -10,7 +10,7 @@
 <body>
 
 <h1>Login</h1>
-<form method="post" th:action="@{/login}">
+<form th:method="post" th:action="@{/}">
 
     <div><label for="username">Username:</label></div>
     <input type="text" th:field="${user.username}" id="username" th:value="*{username}" placeholder="username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'">

@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
 
     public User authenticateUser(String username, String password){
 
+        boolean access = false;
 
         try {
             Connection con = DriverManager.getConnection(ProjectVariable.getUrl(), ProjectVariable.getUsername(), ProjectVariable.getPassword());
@@ -71,9 +72,12 @@ public class UserServiceImpl implements UserService {
 
                 log.info("Login succeeded in: " + this.getClass());
 
+                access = true;
+
                 return user;
 
             }else{
+                access = false;
                 log.info("Login failed in: " + this.getClass());
             }
             con.close();

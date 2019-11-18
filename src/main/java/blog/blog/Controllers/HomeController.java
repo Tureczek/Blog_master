@@ -27,24 +27,25 @@ public class HomeController {
     UserPostService userPostService;
 
     @GetMapping("/")
-    public String loginForm(Model model, String username, String password){
+    public String loginForm(Model model){
         log.info("Getting mapping for loginform in: " + this.getClass());
 
+        User user = new User();
 
-        model.addAttribute("user", userService.authenticateUser(username, password));
+        model.addAttribute("user", user);
 
         return "login";
     }
 
 
     @PostMapping("/")
-    public String login(Model model, @ModelAttribute User user){
+    public String login(Model model, @ModelAttribute User user, String username, String password){
 
         log.info("getting post mapping for login in: " + this.getClass());
-        User currentUser = userService.authenticateUser(user.getUsername(), user.getPassword());
+        User currentUser = userService.authenticateUser(username, password);
 
-        if (currentUser.getUsername() == user.getUsername() && currentUser.getPassword() == user.getPassword()){
-            model.addAttribute("current", currentUser);
+        if (currentUser != null){
+            model.addAttribute("user", currentUser);
             return "redirect:/home";
         } else {
 
