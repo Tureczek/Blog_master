@@ -80,7 +80,11 @@
 <body>
 
 <div class="header">
+    <h5><div style="float: right"><a type="btn btn-danger" th:href="@{'/'}">Logout</a> </div></h5>
+    <br>
+    <span th:if="${user.privs == 'admin'}">
     <div style="float: right"><a class="glyphicon glyphicon-pencil" th:href="${'create/' + user.userId}"/></a></div>
+        </span>
     <h2>Powerpuff Blog</h2>
 </div>
 
@@ -91,51 +95,48 @@
             <tr th:each="get: ${getAll}">
 
             <h2><td th:text="${get.postHead}"></td></h2>
-            <h5><td th:text="${get.username}"></td></h5>
+            <h5>Posted by <td th:text="${get.username}"></td></h5>
             <div class="fakeimg" style="height:200px;"><td th:text="${get.postBody}"></td></div>
 
                 <span th:if="${user.privs == 'admin'}">
                 <td>
                 <a class="glyphicon glyphicon-edit" th:href="${'edit/'+ get.postId + '/' +  user.userId}"/></a>
                 <a class="glyphicon glyphicon-remove" th:href="${'delete/'+ get.postId + '/' + user.userId}"/></a>
-                <div style="float: right"><a type="button" class="btn btn-sucess" th:href="${'create/' + user.userId}">Add Post</a> </div>
                 </td>
                     </span>
 
             </tr>
-
-
-               <!-- Knapper til edit og delete posts ---
-               <a th:type="button" th:href="${'edit/' + get.postId}">Edit post</a>
-                <a th:type="button" th:href="${'delete/' + get.postId}">Delete post</a> -->
-
         </div>
 
     </div>
     <div class="rightcolumn">
         <div class="card">
-            <h2>About Me</h2>
-            <div class="fakeimg" style="height:100px;">Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            <h2>About The Blog</h2>
+            <img src="https://b.rgbimg.com/users/v/vl/vladpchelkin/600/pphSnQa.jpg" style="width: 100%;" >
+            <p>This blog was created by Nicholas Tureczek, as a project in my class at KEA. It has been a difficult process, while this is the first time I have ever worked with
+            databases. Many times, i have been furious that the post and/or database didn't work as intended. But as Faisal says... Good... it means that you have to think.
+            Oh... and i don't know about the picture, it just found a place here.</p>
         </div>
-        <div class="card">
+      <!--  <div class="card">
             <h3>Popular Post</h3>
             <div class="fakeimg">Image</div><br>
             <div class="fakeimg">Image</div><br>
             <div class="fakeimg">Image</div><br>
-        </div>
+        </div>-->
         <div class="card">
             <h3>Follow Me</h3>
-            <p>Some text..</p>
+            <p>Github: Tureczek
+                <br>
+                <br>
+            LinkedIn: https://www.linkedin.com/in/nicholas-tureczek-1ab57783/</p>
         </div>
     </div>
 </div>
-
+<!--
 <div class="footer">
     <h2>Footer</h2>
 </div>
-
-<!-- <a class="glyphicon glyphicon-cog" th:href="${'edit/'+ get.postId}"/> -->
+-->
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 </body>
 </html>
