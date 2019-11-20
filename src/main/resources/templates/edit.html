@@ -88,7 +88,7 @@
         <div class="card">
             <tr>
 
-                <form th:action="@{/edit} " method="post">
+                <form th:action="@{/edit} + '/' + ${user.userId}" method="post">
 
                     <input type="hidden" th:field="${post.postId}" th:object="${post}">
 
@@ -96,7 +96,8 @@
                 <h2><td><input type="text" th:field="${post.postHead}"></td></h2>
 
                 <div class="fakeimg" th:type="text" style="height:200px;"><td><textarea th:field="${post.postBody}" style="width: 963px; height: 160px;"></textarea></td></div>
-                    <input type="submit" class="btn btn-success" value="Submit movie">
+                    <input type="submit" class="btn btn-success" value="Edit Post">
+                    <a type="button" class="btn btn-danger" th:href="@{'/home'} + '/' + ${user.userId}">Back</a>
                 </form>
             </tr>
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
@@ -45,15 +46,19 @@ public class HomeController {
 
         if (currentUser != null){
             model.addAttribute("user", currentUser);
-            return "redirect:/home";
+            return "redirect:/home/"+ currentUser.getUserId();
         } else {
 
         } return "login";
 
     }
 
-    @GetMapping("/home")
-    public String Home(Model model) {
+    @GetMapping("/home/{userId}")
+    public String Home(Model model, @PathVariable int userId) {
+
+        User user = userService.findUserById(userId);
+        model.addAttribute("user", user);
+
         log.info("Home hentes i: " + this.getClass());
         List<UserPost> upList = userPostService.fetchAll();
         model.addAttribute("getAll", upList);

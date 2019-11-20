@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:hight="http://www.w3.org/1999/xhtml">
 <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
@@ -80,6 +80,7 @@
 <body>
 
 <div class="header">
+    <div style="float: right"><a class="glyphicon glyphicon-pencil" th:href="${'create/' + user.userId}"/></a></div>
     <h2>Powerpuff Blog</h2>
 </div>
 
@@ -89,15 +90,24 @@
 
             <tr th:each="get: ${getAll}">
 
-            <h2><td th:text="${get.postHead}">
-
-            </td></h2>
+            <h2><td th:text="${get.postHead}"></td></h2>
             <h5><td th:text="${get.username}"></td></h5>
             <div class="fakeimg" style="height:200px;"><td th:text="${get.postBody}"></td></div>
-                <a th:type="button" th:href="${'edit/' + get.postId}">Edit post</a>
-                <a th:type="button" th:href="${'delete/' + get.postId}">Delete post</a>
 
-        </tr>
+                <span th:if="${user.privs == 'admin'}">
+                <td>
+                <a class="glyphicon glyphicon-edit" th:href="${'edit/'+ get.postId + '/' +  user.userId}"/></a>
+                <a class="glyphicon glyphicon-remove" th:href="${'delete/'+ get.postId + '/' + user.userId}"/></a>
+                <div style="float: right"><a type="button" class="btn btn-sucess" th:href="${'create/' + user.userId}">Add Post</a> </div>
+                </td>
+                    </span>
+
+            </tr>
+
+
+               <!-- Knapper til edit og delete posts ---
+               <a th:type="button" th:href="${'edit/' + get.postId}">Edit post</a>
+                <a th:type="button" th:href="${'delete/' + get.postId}">Delete post</a> -->
 
         </div>
 
@@ -126,7 +136,7 @@
 </div>
 
 <!-- <a class="glyphicon glyphicon-cog" th:href="${'edit/'+ get.postId}"/> -->
-
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 </body>
 </html>
 

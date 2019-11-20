@@ -10,4 +10,6 @@ public interface UserService {
 
     User authenticateUser(String username, String password);
 
+    User findUserById(int id);
+
 }

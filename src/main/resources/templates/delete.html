@@ -88,7 +88,7 @@
         <div class="card">
             <tr>
 
-                <form th:action="@{/delete} " method="post">
+                <form th:action="@{/delete} + '/' + ${user.userId} " method="post">
 
                     <input type="hidden" th:field="${delete.postId}" th:object="${delete}">
 
@@ -97,6 +97,7 @@
 
                     <div class="fakeimg" th:type="text" style="height:200px;"><td th:text="${delete.postBody}" style="width: 963px; height: 160px;"></td></div>
                     <input type="submit" class="btn btn-success" value="Delete">
+                    <a type="button" class="btn btn-danger" th:href="@{/home} + '/' + ${user.userId}">Back</a>
                 </form>
             </tr>
         </div>

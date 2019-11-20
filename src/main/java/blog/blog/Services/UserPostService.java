@@ -1,6 +1,7 @@
 package blog.blog.Services;
 
 import blog.blog.Models.Post;
+import blog.blog.Models.User;
 import blog.blog.Models.UserPost;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public interface UserPostService {
     int create(Post post);
 
     int delete(int id);
+
+
 
 
 }
