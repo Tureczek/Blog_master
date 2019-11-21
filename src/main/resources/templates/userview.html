@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<thead>
+<meta charset="UTF-8">
+<title>Members</title>
+<div class="container">
+</thead>
+
+<h1>Subscribers</h1>
+
+
+<table class="table table-hover">
+
+    <tr>
+        <th scope="col">User Id</th>
+        <th scope="col">Username</th>
+        <th scope="col">Privileges</th>
+    </tr>
+
+    <tbody>
+    <tr th:each="userList: ${findUser}">
+        <td th:text="${userList.userId}"></td>
+        <td th:text="${userList.username}"></td>
+        <td th:text="${userList.privs}"></td>
+    </tr>
+    <a type="button" class="btn btn-danger" th:href="@{'/home'} + '/' + ${user.userId}">Back</a>
+
+
+    </tbody>
+</table>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+
+</html>
+

@@ -67,4 +67,17 @@ public class HomeController {
 
     }
 
+    @GetMapping("home/userview/{userId}")
+    public String Userview(Model model, @PathVariable int userId){
+        log.info("Getting user list in: " +  this.getClass());
+
+        User user = userService.findUserById(userId);
+        model.addAttribute("user", user);
+
+        List<User> userList = userService.fetchAllUsers();
+        model.addAttribute("findUser", userList);
+
+        return "userview";
+    }
+
 }

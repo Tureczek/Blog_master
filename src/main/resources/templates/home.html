@@ -80,11 +80,8 @@
 <body>
 
 <div class="header">
-    <h5><div style="float: right"><a type="btn btn-danger" th:href="@{'/'}">Logout</a> </div></h5>
+    <h5><div style="float: right"><a type="btn btn-danger" th:href="@{'/'}" style="color: red">Logout</a> </div></h5>
     <br>
-    <span th:if="${user.privs == 'admin'}">
-    <div style="float: right"><a class="glyphicon glyphicon-pencil" th:href="${'create/' + user.userId}"/></a></div>
-        </span>
     <h2>Powerpuff Blog</h2>
 </div>
 
@@ -118,11 +115,24 @@
             Oh... and i don't know about the picture, it just found a place here.</p>
         </div>
        <div class="card">
-            <h3>Popular Post</h3>
+
+           <span th:if="${user.privs == 'admin'}">
+            <h3>Options</h3>
+               <br>
+               <a class="glyphicon glyphicon-user"  th:href="${'userview/' + user.userId}" style="color: #333333"> Subscribers</a>
+               <br>
+               <br>
+            <a class="glyphicon glyphicon-pencil" th:href="${'create/' + user.userId}" style="color: #333333"> New Post<br>
+               </a>
+               </span>
+           <span th:if="${user.privs == 'user'}">
+               <h3>Popular Post</h3>
+           <div class="fakeimg">Coming soon...</div><br>
             <div class="fakeimg">Coming soon...</div><br>
             <div class="fakeimg">Coming soon...</div><br>
-            <div class="fakeimg">Coming soon...</div><br>
+               </span>
         </div>
+
         <div class="card">
             <h3>Follow Me</h3>
             <p>Github: Tureczek
