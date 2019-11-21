@@ -10,7 +10,7 @@ public class Test {
             UserServiceImpl us = new UserServiceImpl();
 
             //System.out.println( us.authenticateUser("Nicholas", "test1234").toString());
-            System.out.println(us.findUserById(2));
+            System.out.println(us.fetchAllUsers().toString());
 
     }
 }
