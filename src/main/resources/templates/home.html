@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:hight="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
@@ -9,7 +9,7 @@
             box-sizing: border-box;
         }
 
-        /* Add a gray background color with some padding */
+        /* Add a light blue background color with some padding */
         body {
             font-family: Arial;
             padding: 20px;
@@ -60,7 +60,7 @@
             clear: both;
         }
 
-        /* Footer */
+        /* Footer  didn't use this one yet*/
         .footer {
             padding: 20px;
             text-align: center;
@@ -97,8 +97,9 @@
 
                 <span th:if="${user.privs == 'admin'}">
                 <td>
-                <div style="float: right"><a class="glyphicon glyphicon-edit" th:href="${'edit/'+ get.postId + '/' +  user.userId}"/></a></div>
-                <div style="float: right"><a class="glyphicon glyphicon-remove" th:href="${'delete/'+ get.postId + '/' + user.userId}"/></a></div>
+                <div style="float: right"><a class="glyphicon glyphicon-edit" th:href="${'edit/'+ get.postId + '/' +  user.userId}" style="color: #333333"/> Edit</a></div>
+                    <br>
+                <div style="float: right"><a class="glyphicon glyphicon-remove" th:href="${'delete/'+ get.postId + '/' + user.userId}" style="color: #333333"/> Remove</a></div>
                 </td>
                     </span>
 
